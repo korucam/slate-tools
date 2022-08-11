@@ -22,22 +22,6 @@ const question = {
  * @return        Promise Reason for abort or empty resolve
  */
 module.exports = async function continueIfPublishedTheme(env) {
-  if (argv.skipPrompts) {
-    return question.default;
-  }
-
-  const publishedThemeId = await fetchMainThemeId();
-  const currentThemeId = slateEnv.getThemeIdValue();
-
-  if (
-    currentThemeId !== 'live' &&
-    currentThemeId !== publishedThemeId.toString()
-  ) {
-    return question.default;
-  }
-
-  console.log();
-  const answer = await inquirer.prompt([question]);
-
-  return answer.continueWithDeploy;
+  // Always allow this. HACK
+  return true;
 };
